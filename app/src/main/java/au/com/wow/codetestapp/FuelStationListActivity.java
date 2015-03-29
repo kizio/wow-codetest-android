@@ -26,12 +26,6 @@ public class FuelStationListActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_sortbybrand) {
-            //optional if you have enough time
-            //showDialog();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+	    return item.getItemId () == R.id.action_sortbybrand || super.onOptionsItemSelected (item);
     }
 }

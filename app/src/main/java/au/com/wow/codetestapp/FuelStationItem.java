@@ -1,7 +1,5 @@
 package au.com.wow.codetestapp;
 
-import android.content.Context;
-
 import org.json.JSONObject;
 
 import java.text.NumberFormat;
@@ -34,14 +32,14 @@ public class FuelStationItem {
 	/**
 	 * Constructor.
 	 *
-	 * @param context The {@link Context} the app is being displayed in
 	 * @param object The {@link JSONObject} representing the fuel station
+	 * @param notApplicableString The text to display when there's no value set
 	 */
-	public FuelStationItem (final Context context, final JSONObject object) {
+	public FuelStationItem (final JSONObject object, final String notApplicableString) {
 		super ();
 
 		this.fuelStation = object;
-		this.notApplicable = context.getString(R.string.not_applicable);
+		this.notApplicable = notApplicableString;
 	}
 
 	/**
