@@ -3,5 +3,6 @@
 
     <string name="app_name">WOWCodeTest</string>
     <string name="action_sortbybrand">Sort by Brand</string>
+	<string name="not_applicable">N/A</string>
 
 </resources>

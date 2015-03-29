@@ -14,16 +14,25 @@ import android.widget.ListView;
  * display whole station list. each item contains icon, address and distance
  */
 public class FuelStationListFragment extends ListFragment {
-    final String URL = "http://www.mshd.net/api/gasprices/10025"; // NewYork Petrol stations info
 
-    public FuelStationListFragment() {
+	/**
+	 * NewYork Petrol stations info.
+	 */
+    private final static String URL = "http://www.mshd.net/api/gasprices/10025";
 
-    }
+	/**
+	 * The {@link FuelStationTask} used to load the list of fuel stations.
+	 */
+	private FuelStationTask task = null;
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
+
+	    task = new FuelStationTask (this);
+
+	    task.execute (URL);
     }
 
     @Override
@@ -45,30 +54,13 @@ public class FuelStationListFragment extends ListFragment {
         return super.onOptionsItemSelected(item);
     }
 
+	public void setFuelStationList (final FuelStationList list) {
+		this.task = null;
+
+		setListAdapter (new FuelStationListAdapter (getActivity (), list));
+	}
+
     private void refresh() {
         //refresh the list
-    }
-
-    static class FuelStationListAdapter extends BaseAdapter {
-
-        @Override
-        public int getCount() {
-            return 0;
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            return null;
-        }
     }
 }
